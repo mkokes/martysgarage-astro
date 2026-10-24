@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  const skip = new Set(['projects']);
+  return pages.filter((p) => !skip.has(p.data.path)).map((page) => ({ params: { slug: page.data.path }, props: { page } }));
+}
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<Base title={page.data.title}>
+  <article class="panel" data-pagefind-body>
+    <h1>{page.data.title}</h1>
+    <div class="prose"><Content /></div>
+  </article>
+</Base>

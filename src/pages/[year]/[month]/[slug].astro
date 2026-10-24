@@ -1,0 +1,43 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { getAllPosts, getVehicles, postPath, formatDate, slugify } from '../../../lib/site';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  return posts.map((post) => {
+    const [, y, m, s] = postPath(post).split('/');
+    return { params: { year: y, month: m, slug: s }, props: { post } };
+  });
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const vehicles = (await getVehicles()).filter((v) => v.data.relatedPosts.includes(postPath(post)));
+const all = await getAllPosts();
+const related = all
+  .filter((p) => p.id !== post.id && p.data.tags.some((t) => post.data.tags.includes(t)))
+  .slice(0, 5);
+---
+
+<Base title={post.data.title} description={post.data.excerpt} image={post.data.image} type="article">
+  <article class="panel" data-pagefind-body>
+    <h1>{post.data.title}</h1>
+    <div class="meta">
+      {formatDate(post.data.date)}
+      {post.data.categories.map((c) => <> &middot; <a href={`/category/${slugify(c)}/`}>{c}</a></>)}
+    </div>
+    <div class="prose"><Content /></div>
+    {vehicles.length > 0 && (
+      <p class="tags">Project: {vehicles.map((v) => <a href={`/vehicle/${v.data.slug}/`}>{v.data.title}</a>)}</p>
+    )}
+    {post.data.tags.length > 0 && (
+      <p class="tags">{post.data.tags.map((t) => <a href={`/tag/${slugify(t)}/`}>{t}</a>)}</p>
+    )}
+    {related.length > 0 && (
+      <section class="related">
+        <h3>Related posts</h3>
+        <ul>{related.map((p) => <li><a href={postPath(p)}>{p.data.title}</a></li>)}</ul>
+      </section>
+    )}
+  </article>
+</Base>

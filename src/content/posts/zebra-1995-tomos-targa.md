@@ -1,0 +1,14 @@
+---
+title: "Zebra - 1995 Tomos Targa"
+date: "2011-10-08T18:08:20"
+slug: "zebra-1995-tomos-targa"
+categories: ["Mopeds"]
+tags: ["tomos"]
+image: "/wp-content/uploads/2011/10/DSC_0089.jpg"
+excerpt: "So I've had my Tomos finished for a while now, but I didn't really take any good pictures of it. So here goes..."
+wpId: 1046
+---
+
+So I've had my Tomos finished for a while now, but I didn't really take any good pictures of it. So here goes...
+
+<div class="gallery" data-count="19"><a href="/wp-content/uploads/2011/10/DSC_0089.jpg"><img src="/wp-content/uploads/2011/10/DSC_0089.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0108.jpg"><img src="/wp-content/uploads/2011/10/DSC_0108.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0101.jpg"><img src="/wp-content/uploads/2011/10/DSC_0101.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0094.jpg"><img src="/wp-content/uploads/2011/10/DSC_0094.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0105.jpg"><img src="/wp-content/uploads/2011/10/DSC_0105.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0096.jpg"><img src="/wp-content/uploads/2011/10/DSC_0096.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0104.jpg"><img src="/wp-content/uploads/2011/10/DSC_0104.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0110.jpg"><img src="/wp-content/uploads/2011/10/DSC_0110.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0090.jpg"><img src="/wp-content/uploads/2011/10/DSC_0090.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0102.jpg"><img src="/wp-content/uploads/2011/10/DSC_0102.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0097.jpg"><img src="/wp-content/uploads/2011/10/DSC_0097.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0103.jpg"><img src="/wp-content/uploads/2011/10/DSC_0103.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0100.jpg"><img src="/wp-content/uploads/2011/10/DSC_0100.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0095.jpg"><img src="/wp-content/uploads/2011/10/DSC_0095.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0085.jpg"><img src="/wp-content/uploads/2011/10/DSC_0085.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0111.jpg"><img src="/wp-content/uploads/2011/10/DSC_0111.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0080.jpg"><img src="/wp-content/uploads/2011/10/DSC_0080.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0109.jpg"><img src="/wp-content/uploads/2011/10/DSC_0109.jpg" alt="" loading="lazy"></a><a href="/wp-content/uploads/2011/10/DSC_0078.jpg"><img src="/wp-content/uploads/2011/10/DSC_0078.jpg" alt="" loading="lazy"></a></div>

@@ -1,0 +1,94 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getVehicles, getAllPosts, postPath, formatDate } from '../../lib/site';
+
+export async function getStaticPaths() {
+  return (await getVehicles()).map((v) => ({ params: { slug: v.data.slug }, props: { v } }));
+}
+const { v } = Astro.props;
+const d = v.data;
+const posts = (await getAllPosts()).filter((p) => d.relatedPosts.includes(postPath(p)));
+const sections = [
+  ['Engine Parts', d.engine, 'Engine Part'],
+  ['Fuel System', d.fuel, 'Fuel System Part'],
+  ['Ignition', d.ignition, 'Ignition Part'],
+  ['Transmission', d.transmission, 'Transmission Part'],
+  ['Exhaust', d.exhaust, 'Exhaust Part'],
+  ['Additional Components', d.additional, 'Component'],
+] as const;
+---
+
+<Base title={d.title} description={d.description} image={d.image}>
+  <article class="panel" data-pagefind-body>
+    <h1>{d.title}</h1>
+    <div class="vmain">
+      {d.image && <a href={d.image}><img src={d.image} alt={d.title} /></a>}
+      <p>{d.description}</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" aria-controls="tab-specs" id="t-specs">Specs</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-posts" id="t-posts">Posts</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-gallery" id="t-gallery">Gallery</button>
+    </div>
+    <section class="tabpanel vspecs" id="tab-specs" role="tabpanel" aria-labelledby="t-specs">
+      <h2>Model</h2>
+      <table>
+        <tr><th>Year</th><th>Make</th><th>Model</th></tr>
+        <tr><td>{d.year}</td><td>{d.make}</td><td>{d.model}</td></tr>
+      </table>
+      <h2>Engine</h2>
+      <table>
+        <tr><th>Engine Manufacturer</th><th>Engine Model</th></tr>
+        <tr><td>{d.engineMaker}</td><td>{d.engineModel}</td></tr>
+      </table>
+      {sections.filter(([, rows]) => rows.length).map(([title, rows, label]) => (
+        <>
+          <h2>{title}</h2>
+          <table>
+            <tr><th>{label} Type</th><th>Name</th><th>Notes</th></tr>
+            {rows.map((r) => (
+              <tr>
+                <td>{r.type}</td>
+                <td>{r.url ? <a href={r.url} rel="nofollow noopener">{r.name}</a> : r.name}</td>
+                <td>{r.desc}</td>
+              </tr>
+            ))}
+          </table>
+        </>
+      ))}
+      {d.customMods.length > 0 && (
+        <>
+          <h2>Custom Modifications</h2>
+          <table>
+            <tr><th>Modification</th><th>Description</th></tr>
+            {d.customMods.map((r) => <tr><td>{r.name}</td><td>{r.desc}</td></tr>)}
+          </table>
+        </>
+      )}
+    </section>
+    <section class="tabpanel" id="tab-posts" role="tabpanel" aria-labelledby="t-posts" hidden>
+      <h2>Blog Posts</h2>
+      {posts.length ? (
+        <ul>{posts.map((p) => <li><a href={postPath(p)}>{p.data.title}</a> <span class="meta">{formatDate(p.data.date)}</span></li>)}</ul>
+      ) : <p>No posts yet.</p>}
+    </section>
+    <section class="tabpanel" id="tab-gallery" role="tabpanel" aria-labelledby="t-gallery" hidden>
+      <h2>Gallery</h2>
+      {d.gallery.length ? (
+        <div class="gallery">{d.gallery.map((src) => <a href={src}><img src={src} alt="" loading="lazy" /></a>)}</div>
+      ) : <p>No gallery images.</p>}
+    </section>
+  </article>
+</Base>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.tabs [role=tab]');
+  const show = (id: string) => {
+    tabs.forEach((t) => {
+      const on = t.getAttribute('aria-controls') === id;
+      t.setAttribute('aria-selected', String(on));
+      document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on;
+    });
+  };
+  tabs.forEach((t) => t.addEventListener('click', () => show(t.getAttribute('aria-controls')!)));
+</script>

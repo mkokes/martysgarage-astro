@@ -1,0 +1,55 @@
+---
+title: "Moped Stroke Length"
+path: "reference/moped-stroke-length"
+template: "default"
+wpId: 2015
+---
+
+-   37.4mm= Suzuki FA50
+-   37.4 mm = Morini scooter
+-   37.5mm= suzuki katana
+-   37.8mm =suzuki jr 50 (kids dirt bike)
+-   38.0 mm = Batavus Laura M48/M56
+-   38.0 mm = Piaggio/Gilera Hi-Per 2
+-   39.0 mm = (Franco) Morini M1 Reed Valve
+-   39.0 mm = Garelli NOI/ horizontal
+-   39.0 mm = Minarelli AM 4 5 & 6 (Shifter)
+-   39.1 mm = Peugeot scooter (Also Fox, Wallaroo and 103)
+-   39.2 mm = Minarelli horizontal LC/AC and vertical scooter. qt50, mj50, lb50 chappy, lc50 champ
+-   39.3 mm = Piaggio scooter LC/AC
+-   39.6 mm = Honda PA50/Hobbit/Camino
+-   39.7 mm = Yamaha DT50MX, FS1, RD50, RD60 motorcycles
+-   39.7 mm = Kreidler shifter
+-   39.7 mm = Kreidler Flory 2-Speed
+-   39.7 mm = Sachs 50SW
+-   40.0 mm = Derbi shifter (85 mm conrod length)
+-   40.8 mm = KTM 65 SX
+-   41.0 mm = Jawa 207,210
+-   41.4 mm = Kymco scooter
+-   41.4 mm = Honda MT5/NSR50/NS50/MTX-sh/MTX-ot/MB5/MBX50/MBX80 shifter
+-   41.6 mm = Motobecane AV7/AV10
+-   41.6 mm = Kawasaki AR50/80 shifter
+-   41.6 mm = Kawasaki KX65
+-   41.8 mm = Zundapp shifter
+-   41.8 mm = Morini shifter
+-   42.0 mm = Minarelli RV4 shifter
+-   42.0 mm = Sachs 504 and 505 (A, B, C motors)
+-   43.0 mm = Gilardoni 43mm stroke cylinder (Minarelli horizontal LC)
+-   43.0 mm = Simonini 80cc cylinder (Vespa)
+-   43.0 mm = Parmakit 80cc cylinder (Minarelli horizontal AC&LC)
+-   43.0 mm = Derbi FDS/FDX shifter
+-   43.0 mm = Puch automatic
+-   43.0 mm = Tomos automatic
+-   44.0 mm = Parmakit 80cc cylinder (Piaggio AC+LC)
+-   44.0 mm = Sachs 504 and 505 "D" crank
+-   44.0 mm = Fabrizi 44mm stroke cylinder (Piaggio LC)
+-   44.0 mm = Simonini 80cc cylinder (Minarelli horizontal LC)
+-   44.0 mm = 2FAST4RACE 44mm stroke cylinder (Minarelli horizontal LC and Piaggio LC)
+-   45.8 mm = Kawasaki KX85
+-   45.8 mm = Simonini 89.9cc cylinder (Minarelli AM6)
+-   46.0 mm = Simonini 90.23cc cylinder (Minarelli AM6)
+-   46.0 mm = Simonini 100cc engine (Vespa)
+-   47.0 mm = Zundapp KS-80 (AC and LC)
+-   48.95 mm = KTM 85 SX
+-   50.8 mm = MT8/MB8 shifter
+-   54.0 mm = Zundapp KS-175

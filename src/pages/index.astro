@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { getAllPosts, POSTS_PER_PAGE } from '../lib/site';
+
+const all = await getAllPosts();
+const posts = all.slice(0, POSTS_PER_PAGE);
+const next = all.length > POSTS_PER_PAGE ? '/page/2/' : undefined;
+---
+
+<Base>
+  <PostList posts={posts} next={next} />
+</Base>

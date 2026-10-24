@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { getVehicles } from '../lib/site';
+const vehicles = await getVehicles();
+---
+
+<Base title="Projects" description="Moped and motorcycle projects from Marty's Garage">
+  <article class="panel">
+    <h1>Projects</h1>
+    <ul class="vehicle-grid">
+      {vehicles.map((v) => (
+        <li>
+          <a href={`/vehicle/${v.data.slug}/`}>
+            {v.data.image && <img src={v.data.image} alt="" loading="lazy" />}
+            <span>{v.data.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </article>
+</Base>

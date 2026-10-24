@@ -1,0 +1,23 @@
+---
+title: "Goody Gumdrops"
+slug: "goody-gumdrops"
+vehicleType: "Moped"
+description: "My first Peugeot! I picked this up from my buddy Tom when he decided that he wanted to quit mopeds. My goal for this bike is a comfortable daily rider of sorts."
+year: "1978"
+make: "Peugeot"
+model: "103"
+engineMaker: "Peugeot"
+engineModel: "103"
+image: "/wp-content/uploads/2014/01/20140811_181353.jpg"
+gallery: ["/wp-content/uploads/2014/01/20140811_181353.jpg","/wp-content/uploads/2014/01/20140811_181507.jpg","/wp-content/uploads/2014/08/20140809_111824.jpg","/wp-content/uploads/2014/08/20140809_111941.jpg","/wp-content/uploads/2014/01/20140621_201447.jpg","/wp-content/uploads/2014/01/1977mopeds-com-50cc-racey-peugeo.jpg","/wp-content/uploads/2014/01/1977-racey-peugeot-kit-part-3.jpg","/wp-content/uploads/2014/01/how-to-derestrict-a-peugeot-simo.jpg","/wp-content/uploads/2014/01/1977mopeds-com-peugeot-50cc-race.jpg","/wp-content/uploads/2013/11/stinger.jpg","/wp-content/uploads/2013/11/header.jpg","/wp-content/uploads/2013/11/baffle.jpg","/wp-content/uploads/2013/11/1416526_10151638290057237_1802814825_o-e1383448702347.jpg","/wp-content/uploads/2013/10/1977-50cc-Racey-Kit.png","/wp-content/uploads/2013/10/2013-10-20-15.37.47-e1382328123828.jpg","/wp-content/uploads/2013/09/bigred103.jpg","/wp-content/uploads/2013/09/jpeg-1.jpeg","/wp-content/uploads/2013/09/jpeg.jpeg","/wp-content/uploads/2013/09/55923_10151573554762237_1841936024_o.jpg","/wp-content/uploads/2013/09/1058425_10151467057277237_44803362_o.jpg","/wp-content/uploads/2013/08/1147890_10151499268237237_1438319773_o.jpg","/wp-content/uploads/2013/09/gastank.jpg","/wp-content/uploads/2013/08/1093452_10151499108422237_223236910_o.jpg","/wp-content/uploads/2013/09/1186514_10151523872612237_337720620_o.jpg","/wp-content/uploads/2013/08/1093569_10151499215352237_1174232294_o.jpg","/wp-content/uploads/2013/07/20130716_225230.jpg","/wp-content/uploads/2014/01/IMG_0220.jpg"]
+engine: [{"type":"","name":"1977 Racey Peugeot Kit","url":"http://www.1977mopeds.com/peugeot-racey-50cc-kit.html","desc":"50cc Kit"}]
+fuel: [{"type":"Carburetor","name":"19mm PHBG AD","url":"https://www.treatland.tv/dellorto-PHBG-carburetor-p/dellorto-phbg-19-ad-2513.htm","desc":"Clamp Style, Right Hand Side Tuning"},{"type":"Main Jet","name":"88 ","url":"","desc":""},{"type":"Idle Jet","name":"45 ","url":"","desc":""},{"type":"Starter Jet","name":"60 ","url":"","desc":""},{"type":"Needle","name":"W7 ","url":"","desc":""},{"type":"Atomizer","name":"262 AU ","url":"","desc":""},{"type":"Intake","name":"19mm ","url":"https://www.treatland.tv/peugeot-19mm-PHBG-intake-set-p/peugeot-intake-set-phbg.htm","desc":""},{"type":"Reed Valve","name":"Malossi Carbon Fiber","url":"https://www.treatland.tv/malossi-VL1-carbonio-carbon-fiber-reed-block-p/malossi-white-reed-carbonio.htm","desc":""}]
+ignition: []
+transmission: [{"type":"Clutch","name":"Stock","url":"","desc":"3 balls, 2 star springs"},{"type":"Variator","name":"Doppler ER3 with Clutch Function","url":"https://www.treatland.tv/peugeot-doppler-variator-ER3-p/103-doppler-variator-292517.htm","desc":""},{"type":"Pulley","name":"Tun","url":"https://www.treatland.tv/peugeot-tun-pulley-p/peugeot-tunr-pulley.htm","desc":""},{"type":"Belt","name":"Gates AX32","url":"https://www.treatland.tv/peugoet-gates-ax32-p/peugeot-gates-ax32-belt.htm","desc":""},{"type":"Front Sprocket","name":"13T","url":"","desc":""},{"type":"Rear Sprocket","name":"45T","url":"","desc":""}]
+exhaust: [{"type":"Pipe","name":"Simonini Circuit","url":"http://www.1977mopeds.com/peugeot-simonini-circuit-exhaust.html","desc":"Header and silencer Restrictions removed. Chopped off and repositioned baffle."}]
+additional: [{"type":"Tires","name":"Sava MC11s","url":"","desc":"17\" x 2.25\" "},{"type":"Launch Lever","name":"Polini","url":"","desc":""},{"type":"Temp Gauge","name":"Trail Tech","url":"","desc":""}]
+customMods: [{"name":"Modified Puch Seat","desc":"Chopped up and made a bracket for an aftermarket puch bench seat"},{"name":"Extended Pedal Arm","desc":"Extended the pedal arm so it clears the exhaust"},{"name":"Hardwired","desc":"Wiring completely redone with voltage regulator and killswitch added."}]
+relatedPosts: ["/2013/11/derestrict-peugeot-simonini-circuit-pipe/","/2013/09/got-my-first-peugeot/","/2013/09/1977mopeds-com-peugeot-50cc-racey-kit-review-part-1/","/2013/11/1977-racey-peugeot-kit-part-3/","/2013/10/1977mopedscom-50cc-racey-peugeot-kit-review-part-2/","/2013/09/cleaning-sealing-moped-gas-tank/","/2014/04/peugeot-103-belt-part-numbers-and-comparison/","/2014/08/peugeot-103-rattle-can-paint-job/"]
+wpId: 2240
+---
+
