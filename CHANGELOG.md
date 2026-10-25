@@ -31,3 +31,6 @@ All notable changes to this project are documented here. The format follows [Kee
 
 - WordPress core, theme and plugins, and the unrelated `fow/` project, which are not carried into the new repository.
 - Newsletter signup, MailPoet, comments and Gravity Forms. The four newsletter URLs and a few duplicate tag URLs redirect (to `/contact/` or the matching tag page).
+
+[Unreleased]: https://github.com/mkokes/martysgarage-astro/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/mkokes/martysgarage-astro/releases/tag/v0.1.0
