@@ -17,6 +17,7 @@ Static Astro 7 site for martysgarage.info (moped hobby blog), hosted on GitHub P
 - `src/lib/site.ts` – shared helpers (`postPath`, `slugify`, `getAllPosts`, `getVehicles`, site constants, the Reference menu list).
 - `src/layouts/Base.astro` – the only layout; it holds the header nav, footer and meta tags.
 - `src/styles/global.css` – all styling (crimson `#ce1446` and lime `#b3d732` on dark `#222`; Raleway body, Lobster headings).
+  Colors are theme tokens on `:root` (`--bg`, `--surface`, `--text`, `--link` …) with a dark variant applied by `prefers-color-scheme` or `data-theme` (the header toggle stores it in `localStorage`). Use the tokens, not raw hex values. Pages wrap content in `.shell` (72rem) or `.reading`/`.wide` panels.
 - `public/wp-content/uploads/` – images and PDFs at their original WordPress URL paths. `public/manuals/` – PDF manuals. `public/CNAME` – custom domain.
 - `scripts/extract/` – one-off WordPress migration scripts (not part of the build).
 

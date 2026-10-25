@@ -1,21 +1,41 @@
 ---
 import Base from '../layouts/Base.astro';
+import VehicleCard from '../components/VehicleCard.astro';
 import { getVehicles } from '../lib/site';
 const vehicles = await getVehicles();
+const types = [...new Set(vehicles.map((v) => v.data.vehicleType).filter(Boolean))].sort();
 ---
 
 <Base title="Projects" description="Moped and motorcycle projects from Marty's Garage">
-  <article class="panel">
-    <h1>Projects</h1>
+  <div class="shell">
+    <header class="page-head">
+      <h1>Projects</h1>
+      <p>Every bike that has rolled through the garage, with specs, parts and build posts.</p>
+    </header>
+    {types.length > 1 && (
+      <div class="chips vfilter" role="group" aria-label="Filter by type" hidden>
+        <button type="button" class="chip" data-type="" aria-pressed="true">All</button>
+        {types.map((t) => <button type="button" class="chip" data-type={t} aria-pressed="false">{t}</button>)}
+      </div>
+    )}
     <ul class="vehicle-grid">
-      {vehicles.map((v) => (
-        <li>
-          <a href={`/vehicle/${v.data.slug}/`}>
-            {v.data.image && <img src={v.data.image} alt="" loading="lazy" />}
-            <span>{v.data.title}</span>
-          </a>
-        </li>
-      ))}
+      {vehicles.map((v) => <li data-type={v.data.vehicleType}><VehicleCard vehicle={v} /></li>)}
     </ul>
-  </article>
+  </div>
 </Base>
+
+<script>
+  const filter = document.querySelector<HTMLElement>('.vfilter');
+  if (filter) {
+    const chips = filter.querySelectorAll<HTMLButtonElement>('button');
+    const items = document.querySelectorAll<HTMLLIElement>('.vehicle-grid li');
+    filter.hidden = false;
+    chips.forEach((chip) =>
+      chip.addEventListener('click', () => {
+        const type = chip.dataset.type;
+        chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+        items.forEach((li) => (li.hidden = !!type && li.dataset.type !== type));
+      }),
+    );
+  }
+</script>

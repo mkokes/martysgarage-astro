@@ -1,16 +1,21 @@
 ---
 import { postPath, formatDate, type Post } from '../lib/site';
-const { post } = Astro.props as { post: Post };
+const { post, compact = false } = Astro.props as { post: Post; compact?: boolean };
 const href = postPath(post);
+const category = post.data.categories[0];
+const Heading = compact ? 'h3' : 'h2';
 ---
 
-<article class:list={['post-card panel', { 'no-image': !post.data.image }]}>
-  {post.data.image && (
-    <a href={href} tabindex="-1" aria-hidden="true"><img src={post.data.image} alt="" loading="lazy" decoding="async" /></a>
-  )}
-  <div>
-    <h2><a href={href}>{post.data.title}</a></h2>
+<article class="card">
+  <div class="card-media">
+    {post.data.image
+      ? <img src={post.data.image} alt="" loading="lazy" decoding="async" />
+      : <span class="fallback-art" aria-hidden="true">MG</span>}
+  </div>
+  <div class="card-body">
+    {category && !compact && <span class="pill">{category}</span>}
+    <Heading class="card-title"><a href={href}>{post.data.title}</a></Heading>
     <div class="meta">{formatDate(post.data.date)}</div>
-    <p>{post.data.excerpt} <a href={href}>Read More…</a></p>
+    {post.data.excerpt && <p class="card-excerpt">{post.data.excerpt}</p>}
   </div>
 </article>

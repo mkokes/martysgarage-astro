@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Lightbox from '../components/Lightbox.astro';
 import { SITE_TITLE, SITE_DESCRIPTION, getVehicles, NAV_REFERENCE } from '../lib/site';
 
 interface Props {
@@ -20,6 +21,12 @@ const vehicles = await getVehicles();
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -36,45 +43,74 @@ const vehicles = await getVehicles();
     {ogImage && <meta property="og:image" content={ogImage} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header class="site-header">
-      <a class="site-title" href="/">{SITE_TITLE}</a>
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" />
-      <label for="nav-toggle" class="nav-burger"><span></span></label>
-      <nav class="site-nav" aria-label="Main">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li class="has-sub">
-            <a href="/projects/">Projects</a>
-            <ul class="sub">
-              {vehicles.map((v) => <li><a href={`/vehicle/${v.data.slug}/`}>{v.data.title}</a></li>)}
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="/reference/">Reference</a>
-            <ul class="sub">
-              {NAV_REFERENCE.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
-            </ul>
-          </li>
-          <li><a href="https://mkokes.github.io/toolbox/">Toolbox</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/search/">Search</a></li>
-        </ul>
-      </nav>
+      <div class="header-inner">
+        <a class="site-title" href="/">{SITE_TITLE}</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" />
+        <label for="nav-toggle" class="nav-burger"><span></span></label>
+        <button type="button" class="theme-toggle" aria-label="Dark mode" aria-pressed="false" title="Toggle dark mode">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" /></svg>
+        </button>
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li class="has-sub">
+              <a href="/projects/">Projects</a>
+              <ul class="sub">
+                {vehicles.map((v) => <li><a href={`/vehicle/${v.data.slug}/`}>{v.data.title}</a></li>)}
+              </ul>
+            </li>
+            <li class="has-sub">
+              <a href="/reference/">Reference</a>
+              <ul class="sub">
+                {NAV_REFERENCE.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
+              </ul>
+            </li>
+            <li><a href="https://mkokes.github.io/toolbox/">Toolbox</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/search/">Search</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
       <slot />
     </main>
     <footer class="site-footer">
-      <p>
-        &copy; {new Date().getFullYear()} {SITE_TITLE} &middot;
-        <a href="/rss.xml">RSS</a> &middot;
-        <a href="https://facebook.com/martysgarage">Facebook</a> &middot;
-        <a href="https://twitter.com/martysgarage">Twitter</a>
-      </p>
+      <div class="footer-inner">
+        <span class="footer-brand">{SITE_TITLE}</span>
+        <ul class="footer-links">
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/reference/">Reference</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+          <li><a href="https://facebook.com/martysgarage">Facebook</a></li>
+          <li><a href="https://twitter.com/martysgarage">Twitter</a></li>
+        </ul>
+        <p>&copy; {new Date().getFullYear()} {SITE_TITLE} &middot; {SITE_DESCRIPTION}</p>
+      </div>
     </footer>
+    <Lightbox />
+    <script>
+      const root = document.documentElement;
+      const toggle = document.querySelector<HTMLButtonElement>('.theme-toggle')!;
+      const system = matchMedia('(prefers-color-scheme: dark)');
+      const current = () => root.dataset.theme ?? (system.matches ? 'dark' : 'light');
+      const sync = () => toggle.setAttribute('aria-pressed', String(current() === 'dark'));
+      toggle.addEventListener('click', () => {
+        const next = current() === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        try {
+          localStorage.setItem('theme', next);
+        } catch {}
+        sync();
+      });
+      system.addEventListener('change', sync);
+      sync();
+    </script>
     <script is:inline>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));

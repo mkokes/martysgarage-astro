@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getAllPosts, postPath, formatDate, slugify } from '../../lib/site';
+import PostList from '../../components/PostList.astro';
+import { getAllPosts, slugify } from '../../lib/site';
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
@@ -15,8 +16,8 @@ const { name, posts } = Astro.props;
 ---
 
 <Base title={`Category: ${name}`}>
-  <article class="panel">
-    <h1>Category: {name}</h1>
-    <ul>{posts.map((p) => <li><a href={postPath(p)}>{p.data.title}</a> <span class="meta">{formatDate(p.data.date)}</span></li>)}</ul>
-  </article>
+  <div class="shell">
+    <header class="page-head"><h1>Category: {name}</h1><p>{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p></header>
+    <PostList posts={posts} />
+  </div>
 </Base>

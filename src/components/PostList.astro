@@ -4,8 +4,12 @@ import type { Post } from '../lib/site';
 const { posts, prev, next } = Astro.props as { posts: Post[]; prev?: string; next?: string };
 ---
 
-{posts.map((post) => <PostCard post={post} />)}
-<nav class="pager" aria-label="Pagination">
-  <span>{prev && <a href={prev}>&larr; Newer posts</a>}</span>
-  <span>{next && <a href={next}>Older posts &rarr;</a>}</span>
-</nav>
+<div class="post-grid">
+  {posts.map((post) => <PostCard post={post} />)}
+</div>
+{(prev || next) && (
+  <nav class="pager" aria-label="Pagination">
+    <span>{prev && <a href={prev}>&larr; Newer posts</a>}</span>
+    <span>{next && <a href={next}>Older posts &rarr;</a>}</span>
+  </nav>
+)}

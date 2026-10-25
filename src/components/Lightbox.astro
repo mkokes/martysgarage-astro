@@ -1,0 +1,59 @@
+<dialog class="lightbox" aria-label="Image viewer">
+  <figure>
+    <img alt="" />
+  </figure>
+  <div class="lightbox-bar"><span class="lb-caption"></span><span class="lb-count"></span></div>
+  <button type="button" class="lb-close" aria-label="Close">&times;</button>
+  <button type="button" class="lb-prev" aria-label="Previous image">&lsaquo;</button>
+  <button type="button" class="lb-next" aria-label="Next image">&rsaquo;</button>
+</dialog>
+
+<script>
+  // Opens image links (inline post photos, galleries) in a modal. Without JS the links open the image directly.
+  const dialog = document.querySelector<HTMLDialogElement>('.lightbox')!;
+  const img = dialog.querySelector('img')!;
+  const caption = dialog.querySelector('.lb-caption')!;
+  const count = dialog.querySelector('.lb-count')!;
+  const prev = dialog.querySelector<HTMLButtonElement>('.lb-prev')!;
+  const next = dialog.querySelector<HTMLButtonElement>('.lb-next')!;
+  let group: HTMLAnchorElement[] = [];
+  let index = 0;
+
+  const isImageLink = (a: HTMLAnchorElement) =>
+    a.origin === location.origin && /\.(jpe?g|png|gif|webp)$/i.test(a.pathname) && !!a.querySelector('img');
+
+  const show = (i: number) => {
+    index = (i + group.length) % group.length;
+    const a = group[index];
+    const alt = a.querySelector('img')?.alt ?? '';
+    img.src = a.href;
+    img.alt = alt;
+    caption.textContent = alt;
+    count.textContent = group.length > 1 ? `${index + 1} / ${group.length}` : '';
+    prev.hidden = next.hidden = group.length < 2;
+  };
+
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = (e.target as Element).closest?.('a');
+    if (!a || !isImageLink(a)) return;
+    const scope = a.closest('.gallery') ?? a.closest('article') ?? document.body;
+    group = [...scope.querySelectorAll('a')].filter(isImageLink);
+    e.preventDefault();
+    show(group.indexOf(a));
+    dialog.showModal();
+  });
+
+  prev.addEventListener('click', () => show(index - 1));
+  next.addEventListener('click', () => show(index + 1));
+  dialog.querySelector('.lb-close')!.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog || e.target === dialog.querySelector('figure')) dialog.close();
+  });
+  dialog.addEventListener('keydown', (e) => {
+    if (group.length < 2) return;
+    if (e.key === 'ArrowLeft') show(index - 1);
+    if (e.key === 'ArrowRight') show(index + 1);
+  });
+  dialog.addEventListener('close', () => img.removeAttribute('src'));
+</script>

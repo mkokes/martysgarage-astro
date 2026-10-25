@@ -16,14 +16,29 @@ const sections = [
   ['Exhaust', d.exhaust, 'Exhaust Part'],
   ['Additional Components', d.additional, 'Component'],
 ] as const;
+const hasParts = sections.some(([, rows]) => rows.length) || d.customMods.length > 0;
+const specs = [
+  ['Type', d.vehicleType],
+  ['Year', d.year],
+  ['Make', d.make],
+  ['Model', d.model],
+  ['Engine', [d.engineMaker, d.engineModel].filter(Boolean).join(' ')],
+].filter(([, value]) => value);
 ---
 
 <Base title={d.title} description={d.description} image={d.image}>
-  <article class="panel" data-pagefind-body>
+  <article class="panel shell" data-pagefind-body>
     <h1>{d.title}</h1>
-    <div class="vmain">
-      {d.image && <a href={d.image}><img src={d.image} alt={d.title} /></a>}
-      <p>{d.description}</p>
+    <div class="vhero">
+      {d.image && <a class="vhero-media" href={d.image}><img src={d.image} alt={d.title} fetchpriority="high" /></a>}
+      <div>
+        {specs.length > 0 && (
+          <div class="spec-plate">
+            <dl>{specs.map(([label, value]) => <><dt>{label}</dt><dd>{value}</dd></>)}</dl>
+          </div>
+        )}
+        {d.description && <p class="vhero-desc">{d.description}</p>}
+      </div>
     </div>
     <div class="tabs" role="tablist">
       <button role="tab" aria-selected="true" aria-controls="tab-specs" id="t-specs">Specs</button>
@@ -31,16 +46,6 @@ const sections = [
       <button role="tab" aria-selected="false" aria-controls="tab-gallery" id="t-gallery">Gallery</button>
     </div>
     <section class="tabpanel vspecs" id="tab-specs" role="tabpanel" aria-labelledby="t-specs">
-      <h2>Model</h2>
-      <table>
-        <tr><th>Year</th><th>Make</th><th>Model</th></tr>
-        <tr><td>{d.year}</td><td>{d.make}</td><td>{d.model}</td></tr>
-      </table>
-      <h2>Engine</h2>
-      <table>
-        <tr><th>Engine Manufacturer</th><th>Engine Model</th></tr>
-        <tr><td>{d.engineMaker}</td><td>{d.engineModel}</td></tr>
-      </table>
       {sections.filter(([, rows]) => rows.length).map(([title, rows, label]) => (
         <>
           <h2>{title}</h2>
@@ -65,6 +70,7 @@ const sections = [
           </table>
         </>
       )}
+      {!hasParts && <p>No parts recorded yet.</p>}
     </section>
     <section class="tabpanel" id="tab-posts" role="tabpanel" aria-labelledby="t-posts" hidden>
       <h2>Blog Posts</h2>

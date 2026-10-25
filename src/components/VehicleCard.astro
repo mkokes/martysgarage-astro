@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content';
+const { vehicle } = Astro.props as { vehicle: CollectionEntry<'vehicles'> };
+const d = vehicle.data;
+---
+
+<a class="vcard" href={`/vehicle/${d.slug}/`}>
+  <div class="vcard-media">
+    {d.image
+      ? <img src={d.image} alt="" loading="lazy" decoding="async" />
+      : <span class="fallback-art" aria-hidden="true">MG</span>}
+  </div>
+  <div class="vcard-body">
+    <span class="vcard-title">{d.title}</span>
+    {d.vehicleType && <span class="pill">{d.vehicleType}</span>}
+  </div>
+</a>

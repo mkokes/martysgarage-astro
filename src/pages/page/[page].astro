@@ -23,5 +23,8 @@ const { posts, prev, next, n } = Astro.props;
 ---
 
 <Base title={`Page ${n}`}>
-  <PostList posts={posts} prev={prev} next={next} />
+  <div class="shell">
+    <header class="page-head"><h1>Older posts</h1><p>Page {n}</p></header>
+    <PostList posts={posts} prev={prev} next={next} />
+  </div>
 </Base>

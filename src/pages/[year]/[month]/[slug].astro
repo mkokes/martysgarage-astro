@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
+import PostCard from '../../../components/PostCard.astro';
 import { getAllPosts, getVehicles, postPath, formatDate, slugify } from '../../../lib/site';
 
 export async function getStaticPaths() {
@@ -16,28 +17,35 @@ const vehicles = (await getVehicles()).filter((v) => v.data.relatedPosts.include
 const all = await getAllPosts();
 const related = all
   .filter((p) => p.id !== post.id && p.data.tags.some((t) => post.data.tags.includes(t)))
-  .slice(0, 5);
+  .slice(0, 3);
 ---
 
 <Base title={post.data.title} description={post.data.excerpt} image={post.data.image} type="article">
-  <article class="panel" data-pagefind-body>
-    <h1>{post.data.title}</h1>
-    <div class="meta">
-      {formatDate(post.data.date)}
-      {post.data.categories.map((c) => <> &middot; <a href={`/category/${slugify(c)}/`}>{c}</a></>)}
-    </div>
-    <div class="prose"><Content /></div>
-    {vehicles.length > 0 && (
-      <p class="tags">Project: {vehicles.map((v) => <a href={`/vehicle/${v.data.slug}/`}>{v.data.title}</a>)}</p>
-    )}
-    {post.data.tags.length > 0 && (
-      <p class="tags">{post.data.tags.map((t) => <a href={`/tag/${slugify(t)}/`}>{t}</a>)}</p>
-    )}
+  <div class="shell">
+    <article data-pagefind-body>
+      {post.data.image && (
+        <figure class="post-hero"><img src={post.data.image} alt="" fetchpriority="high" decoding="async" /></figure>
+      )}
+      <div class="panel reading">
+        <h1>{post.data.title}</h1>
+        <div class="post-meta">
+          <span class="meta">{formatDate(post.data.date)}</span>
+          {post.data.categories.map((c) => <a class="pill" href={`/category/${slugify(c)}/`}>{c}</a>)}
+        </div>
+        <div class="prose"><Content /></div>
+        {vehicles.length > 0 && (
+          <p class="tags"><span class="label">Project</span>{vehicles.map((v) => <a href={`/vehicle/${v.data.slug}/`}>{v.data.title}</a>)}</p>
+        )}
+        {post.data.tags.length > 0 && (
+          <p class="tags"><span class="label">Tags</span>{post.data.tags.map((t) => <a href={`/tag/${slugify(t)}/`}>{t}</a>)}</p>
+        )}
+      </div>
+    </article>
     {related.length > 0 && (
-      <section class="related">
-        <h3>Related posts</h3>
-        <ul>{related.map((p) => <li><a href={postPath(p)}>{p.data.title}</a></li>)}</ul>
+      <section class="related" aria-labelledby="related-heading">
+        <h2 id="related-heading">Related posts</h2>
+        <div class="post-grid compact">{related.map((p) => <PostCard post={p} compact />)}</div>
       </section>
     )}
-  </article>
+  </div>
 </Base>
