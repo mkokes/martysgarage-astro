@@ -24,7 +24,9 @@ const vehicles = await getVehicles();
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon-180.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#ce1446" />
     <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
     <meta property="og:site_name" content={SITE_TITLE} />
     <meta property="og:title" content={title ?? SITE_TITLE} />
@@ -73,5 +75,10 @@ const vehicles = await getVehicles();
         <a href="https://twitter.com/martysgarage">Twitter</a>
       </p>
     </footer>
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+      }
+    </script>
   </body>
 </html>
