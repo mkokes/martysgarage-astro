@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-24
+
 ### Added
 
 - Astro 7 static site replacing the WordPress installation at martysgarage.info.
@@ -17,6 +19,8 @@ All notable changes to this project are documented here. The format follows [Kee
 - `scripts/check-links.mjs` and `scripts/check-parity.mjs` for post-build checks.
 - `scripts/extract/` one-off migration scripts.
 - `CNAME` for the custom domain.
+- Installable PWA: web manifest, icons, and a service worker with an offline fallback page.
+- Deploy workflow job that purges the Cloudflare cache after each GitHub Pages deploy; it skips itself until `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ZONE_ID` are configured.
 
 ### Changed
 
