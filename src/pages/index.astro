@@ -1,13 +1,51 @@
 ---
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
-import { getAllPosts, POSTS_PER_PAGE } from '../lib/site';
+import FeaturedPost from '../components/FeaturedPost.astro';
+import VehicleCard from '../components/VehicleCard.astro';
+import { getAllPosts, getVehicles, POSTS_PER_PAGE, SITE_TITLE, SITE_DESCRIPTION, NAV_REFERENCE } from '../lib/site';
 
 const all = await getAllPosts();
-const posts = all.slice(0, POSTS_PER_PAGE);
+const [featured, ...posts] = all.slice(0, POSTS_PER_PAGE);
 const next = all.length > POSTS_PER_PAGE ? '/page/2/' : undefined;
+const vehicles = await getVehicles();
 ---
 
 <Base>
-  <PostList posts={posts} next={next} />
+  <div class="shell">
+    <section class="intro">
+      <h1>{SITE_TITLE}</h1>
+      <p class="tagline">{SITE_DESCRIPTION}</p>
+      <p>Build logs, how-tos and reference tables from a garage full of vintage mopeds and small motorcycles.</p>
+    </section>
+
+    <FeaturedPost post={featured} />
+
+    <section aria-labelledby="projects-heading">
+      <div class="section-head">
+        <h2 id="projects-heading">Project bikes</h2>
+        <a href="/projects/">See all projects &rarr;</a>
+      </div>
+      <ul class="vstrip">
+        {vehicles.map((v) => <li><VehicleCard vehicle={v} /></li>)}
+      </ul>
+    </section>
+
+    <section aria-labelledby="reference-heading">
+      <div class="section-head">
+        <h2 id="reference-heading">Reference</h2>
+        <a href="/reference/">All reference &rarr;</a>
+      </div>
+      <ul class="chips">
+        {NAV_REFERENCE.map(([label, href]) => <li><a class="chip" href={href}>{label}</a></li>)}
+      </ul>
+    </section>
+
+    <section aria-labelledby="recent-heading">
+      <div class="section-head">
+        <h2 id="recent-heading">Recent posts</h2>
+      </div>
+      <PostList posts={posts} next={next} />
+    </section>
+  </div>
 </Base>

@@ -1,5 +1,5 @@
 // Bump VERSION to invalidate all caches.
-const VERSION = 'v1';
+const VERSION = 'v2';
 const PAGES = `pages-${VERSION}`;
 const ASSETS = `assets-${VERSION}`;
 const OFFLINE_URL = '/offline.html';

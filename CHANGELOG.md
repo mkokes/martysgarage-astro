@@ -4,6 +4,20 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- Dark mode that follows the system setting, with a header toggle that remembers the choice.
+- Home page dashboard: intro, featured latest post, project bikes strip, reference links and a recent posts grid.
+- Image lightbox for post photos and galleries (previous/next, keyboard, no dependencies).
+- Spec plate on vehicle pages and type filters on `/projects/`.
+
+### Changed
+
+- Visual refresh: theme tokens instead of hard-coded colors, a sticky header, a wider 72rem layout with a narrower reading column, and the linen background removed.
+- Post lists, tag and category archives use an image-top card grid, with a placeholder for posts without an image.
+- Post pages show the featured image as a hero and related posts as cards.
+- Service worker cache bumped to `v2` so returning visitors get the new styles.
+
 ## [0.1.0] - 2026-10-24
 
 ### Added

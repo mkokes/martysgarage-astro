@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base title="Contact" description="Ask a question or request service from Marty's Garage">
-  <article class="panel">
+  <article class="panel reading">
     <h1>Contact</h1>
     <p>If you'd like to ask me a question or if you have a machine in need of service fill out the form below and I'll get back to you.</p>
     <p>
@@ -17,7 +17,7 @@ import Base from '../layouts/Base.astro';
       <label>Email <input type="email" name="email" required autocomplete="email" /></label>
       <label>Message <textarea name="message" rows="7" required></textarea></label>
       <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <button type="submit">Send</button>
+      <button class="button" type="submit">Send</button>
     </form>
   </article>
 </Base>
