@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
 import FeaturedPost from '../components/FeaturedPost.astro';
 import VehicleCard from '../components/VehicleCard.astro';
-import { getAllPosts, getVehicles, POSTS_PER_PAGE, SITE_TITLE, SITE_DESCRIPTION, NAV_REFERENCE } from '../lib/site';
+import { getAllPosts, getVehicles, POSTS_PER_PAGE, SITE_DESCRIPTION, NAV_REFERENCE } from '../lib/site';
 
 const all = await getAllPosts();
 const [featured, ...posts] = all.slice(0, POSTS_PER_PAGE);
@@ -14,8 +14,7 @@ const vehicles = await getVehicles();
 <Base>
   <div class="shell">
     <section class="intro">
-      <h1>{SITE_TITLE}</h1>
-      <p class="tagline">{SITE_DESCRIPTION}</p>
+      <h1>{SITE_DESCRIPTION}</h1>
       <p>Build logs, how-tos and reference tables from a garage full of vintage mopeds and small motorcycles.</p>
     </section>
 

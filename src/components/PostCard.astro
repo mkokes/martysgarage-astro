@@ -1,15 +1,16 @@
 ---
-import { postPath, formatDate, type Post } from '../lib/site';
+import { postPath, postImage, formatDate, type Post } from '../lib/site';
 const { post, compact = false } = Astro.props as { post: Post; compact?: boolean };
 const href = postPath(post);
+const image = postImage(post);
 const category = post.data.categories[0];
 const Heading = compact ? 'h3' : 'h2';
 ---
 
 <article class="card">
   <div class="card-media">
-    {post.data.image
-      ? <img src={post.data.image} alt="" loading="lazy" decoding="async" />
+    {image
+      ? <img src={image} alt="" loading="lazy" decoding="async" />
       : <span class="fallback-art" aria-hidden="true">MG</span>}
   </div>
   <div class="card-body">

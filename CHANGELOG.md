@@ -10,6 +10,7 @@ All notable changes to this project are documented here. The format follows [Kee
 - Home page dashboard: intro, featured latest post, project bikes strip, reference links and a recent posts grid.
 - Image lightbox for post photos and galleries (previous/next, keyboard, no dependencies).
 - Spec plate on vehicle pages and type filters on `/projects/`.
+- Posts without a featured image use the thumbnail of their first YouTube video on cards and in social previews.
 
 ### Changed
 
@@ -17,6 +18,16 @@ All notable changes to this project are documented here. The format follows [Kee
 - Post lists, tag and category archives use an image-top card grid, with a placeholder for posts without an image.
 - Post pages show the featured image as a hero and related posts as cards.
 - Service worker cache bumped to `v2` so returning visitors get the new styles.
+- "Marty's Garage" appears less often: the home page heading is now the tagline, and the footer keeps only the copyright line.
+
+### Fixed
+
+- Restored the YouTube video missing from "How to shorten pit bike forks for a moped".
+- Restored the YouTube videos missing from "Rally of the Corn Vidya", "Les Brelons Barjots Summer Fun" and "On Any Sunday: The Next Chapter", recovered from the Wayback Machine.
+
+### Removed
+
+- Seven posts whose videos no longer exist anywhere (blip.tv, a news site player, or embeds already gone from the archive). Their URLs, and three tags only they used, redirect to the matching category archive.
 
 ## [0.1.0] - 2026-10-24
 

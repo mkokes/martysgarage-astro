@@ -2,7 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import PostCard from '../../../components/PostCard.astro';
-import { getAllPosts, getVehicles, postPath, formatDate, slugify } from '../../../lib/site';
+import { getAllPosts, getVehicles, postPath, postImage, formatDate, slugify } from '../../../lib/site';
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
@@ -20,7 +20,7 @@ const related = all
   .slice(0, 3);
 ---
 
-<Base title={post.data.title} description={post.data.excerpt} image={post.data.image} type="article">
+<Base title={post.data.title} description={post.data.excerpt} image={postImage(post)} type="article">
   <div class="shell">
     <article data-pagefind-body>
       {post.data.image && (
