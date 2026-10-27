@@ -20,6 +20,10 @@ All notable changes to this project are documented here. The format follows [Kee
 - Service worker cache bumped to `v2` so returning visitors get the new styles.
 - "Marty's Garage" appears less often: the home page heading is now the tagline, and the footer keeps only the copyright line.
 
+### Fixed
+
+- Restored the YouTube video missing from "How to shorten pit bike forks for a moped".
+
 ## [0.1.0] - 2026-10-24
 
 ### Added
