@@ -23,6 +23,11 @@ All notable changes to this project are documented here. The format follows [Kee
 ### Fixed
 
 - Restored the YouTube video missing from "How to shorten pit bike forks for a moped".
+- Restored the YouTube videos missing from "Rally of the Corn Vidya", "Les Brelons Barjots Summer Fun" and "On Any Sunday: The Next Chapter", recovered from the Wayback Machine.
+
+### Removed
+
+- Seven posts whose videos no longer exist anywhere (blip.tv, a news site player, or embeds already gone from the archive). Their URLs, and three tags only they used, redirect to the matching category archive.
 
 ## [0.1.0] - 2026-10-24
 
