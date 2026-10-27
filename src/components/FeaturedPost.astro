@@ -1,13 +1,14 @@
 ---
-import { postPath, formatDate, type Post } from '../lib/site';
+import { postPath, postImage, formatDate, type Post } from '../lib/site';
 const { post } = Astro.props as { post: Post };
 const href = postPath(post);
+const image = postImage(post);
 ---
 
 <article class="featured">
   <a class="featured-media" href={href} tabindex="-1" aria-hidden="true">
-    {post.data.image
-      ? <img src={post.data.image} alt="" fetchpriority="high" decoding="async" />
+    {image
+      ? <img src={image} alt="" fetchpriority="high" decoding="async" />
       : <span class="fallback-art">MG</span>}
   </a>
   <div class="featured-body">

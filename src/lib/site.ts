@@ -14,6 +14,15 @@ export const postPath = (p: Post) => {
   return `/${y}/${m}/${p.data.slug}/`;
 };
 
+const YOUTUBE_ID = /(?:youtube(?:-nocookie)?\.com\/(?:embed\/|watch\?v=|v\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/;
+
+/** The post's own image, or else the thumbnail of the first YouTube video in its body. */
+export const postImage = (p: Post): string | undefined => {
+  if (p.data.image) return p.data.image;
+  const id = p.body?.match(YOUTUBE_ID)?.[1];
+  return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : undefined;
+};
+
 export const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
