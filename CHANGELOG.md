@@ -6,6 +6,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Added
 
+- GPL-3.0-or-later license (`LICENSE`).
 - Dark mode that follows the system setting, with a header toggle that remembers the choice.
 - Home page dashboard: intro, featured latest post, project bikes strip, reference links and a recent posts grid.
 - Image lightbox for post photos and galleries (previous/next, keyboard, no dependencies).

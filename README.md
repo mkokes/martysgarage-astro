@@ -69,3 +69,9 @@ After a build, two scripts help catch regressions:
 2. `download-images.mjs` fetches the uploads from the live site, resizes them to 1600px wide, and writes them to `public/wp-content/uploads/`.
 
 The database dump contains private data (form submissions, subscriber emails, password hashes). Never commit it. `*.sql`, `*.sql.gz` and `scrape-cache/` are git-ignored.
+
+## License
+
+Copyright (C) 2026 Marty Kokes
+
+Licensed under the GNU General Public License v3.0 or later. See [LICENSE](LICENSE).
