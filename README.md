@@ -2,6 +2,15 @@
 
 Static site for [martysgarage.info](https://martysgarage.info), a moped and motorcycle hobby blog with project pages and reference material. Built with [Astro](https://astro.build) and hosted on GitHub Pages. It replaces the old WordPress site.
 
+## Features
+
+- Blog archive (`/YYYY/MM/slug/`) with pagination, categories, tags, related posts and YouTube thumbnail fallbacks
+- Vehicle project pages (`/vehicle/slug/`) with specs, parts tables, gallery and linked posts, plus type filtering on `/projects/`
+- Reference tables and downloadable PDF manuals under `/reference/` and `/manuals/`
+- Client-side full-text search via Pagefind (`/search/`), RSS feed (`/rss.xml`) and sitemap
+- Image lightbox and a Light / Dark theme toggle (follows the OS setting by default)
+- Installable PWA with service worker caching and an offline fallback page (`/offline.html`)
+
 ## Requirements
 
 - Node 22.23.4 or newer (`.nvmrc` pins 24)
@@ -42,7 +51,7 @@ wpId: 0
 Post body in Markdown. YouTube embeds can be pasted as an iframe.
 ```
 
-`wpId` is a leftover from the migration and is required by the schema; use `0` for new content.
+`wpId` is a leftover from the migration and is required by the schema; use `0` for new content. Posts without an `image` automatically fall back to the thumbnail of their first YouTube video on cards and social previews.
 
 Images are served from `public/wp-content/uploads/YYYY/MM/`. This keeps the original WordPress URLs working. Resize photos to about 1600px wide before adding them. PDF manuals are in `public/manuals/`.
 
@@ -52,7 +61,9 @@ The contact page posts to [Formspree](https://formspree.io/f/xdeekojw). Submissi
 
 ## Deployment
 
-Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it to GitHub Pages. `public/CNAME` sets the custom domain.
+Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site, publishes it to GitHub Pages, and purges the Cloudflare cache (when `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ZONE_ID` are configured). `public/CNAME` sets the custom domain.
+
+See [AGENTS.md](AGENTS.md) for architecture, styling tokens and conventions, and [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ## Checks
 
